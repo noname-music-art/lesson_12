@@ -1,8 +1,7 @@
 import logging
+
 from json import JSONDecodeError
-
 from flask import Blueprint, render_template, request
-
 from functions import add_post
 from loader.utils import save_picture
 
@@ -22,7 +21,7 @@ def add_post_page():
     if not picture or not content:
         return 'Нет картинки или текста'
 
-    if picture.filename.split('.')[-1] not in ['jpeg', 'png']:
+    if picture.filename.split('.')[-1] not in ['jpeg', 'png', 'jpg']:
         logging.info('Попытка загрузить не картинку')
         return 'Неверное расширение файла'
 
